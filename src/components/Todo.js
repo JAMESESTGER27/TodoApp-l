@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Todo = ({todo,todoDelete,todoComplete}) => {
+export const Todo = ({todo,todoDelete,todoComplete,setTodoEdit}) => {
 
   const handleDelete = () =>{
     todoDelete(todo.id)
@@ -8,7 +8,9 @@ export const Todo = ({todo,todoDelete,todoComplete}) => {
   const handleComplete = () =>{
     todoComplete(todo.id)
   }
-
+  const handleEdit = () =>{
+    setTodoEdit(todo)
+  }
   const {title,description} = todo
   return (
     <>
@@ -30,7 +32,11 @@ export const Todo = ({todo,todoDelete,todoComplete}) => {
           </p>
           <hr/>
           <div className="d-flex justify-content-end">
-          <button className="btn btn-sm btn-outline-primary me-2">Editar</button>
+          <button 
+          onClick={handleEdit}
+          className="btn btn-sm btn-outline-primary me-2"
+          >
+          Editar</button>
           <button onClick={handleDelete} className="btn btn-sm btn-outline-danger">Eliminar</button>
           </div>
         </div>
